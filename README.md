@@ -63,3 +63,8 @@ The purpose of this project is to demonstrate hands-on experience with:
 2. Open the project in your IDE  
 3. Run `MyJunit.java` as a JUnit test class  
 4. (Optional) Uncomment `driver.quit()` in `@AfterAll` to auto-close browser after tests
+
+### 🧾 Test Execution Report (HTML Screenshot)
+Below is a sample HTML report automatically generated after running the Selenium-JUnit test suite.
+![image alt]([https://github.com/abhishek11das/jmeter-performance-testing/blob/55a5688773ea6a6d8e1b3ca30494b58e718a1966/Load%20Test.png](https://github.com/abhishek11das/selenium-junit-demoqa-automation/blob/abefbc2a9a57ce47816a8688ef1a702e23f3a37b/Report.png))
+
