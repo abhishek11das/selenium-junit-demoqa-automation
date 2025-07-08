@@ -65,5 +65,5 @@ The purpose of this project is to demonstrate hands-on experience with:
 4. (Optional) Uncomment `driver.quit()` in `@AfterAll` to auto-close browser after tests
 
 ### 🧾 Test Execution Report (HTML Screenshot)
-![image alt](https://github.com/abhishek11das/dmoney-api-automation/blob/1c3461a583b8ac77e7a6c5d9f68fba3f591c5882/HTML%20Report.png](https://github.com/abhishek11das/selenium-junit-demoqa-automation/blob/abefbc2a9a57ce47816a8688ef1a702e23f3a37b/Report.png)
+![Image alt text](https://github.com/abhishek11das/selenium-junit-demoqa-automation/blob/abefbc2a9a57ce47816a8688ef1a702e23f3a37b/Report.png?raw=true)
 
