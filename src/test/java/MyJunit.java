@@ -1,9 +1,11 @@
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,7 +18,13 @@ public class MyJunit {
 
     @BeforeAll
     public void setup() {
-        driver = new ChromeDriver(); //driver is obj of ChromeDriver(); this method uses Webdriver to show his capabilites
+        System.setProperty("webdriver.chrome.logfile", "D:\\selenium_logs\\chromedriver.log");
+        System.setProperty("webdriver.chrome.silentOutput", "true"); // optional: disables extra console noise
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-breakpad"); // disables crash dumps
+        options.addArguments("user-data-dir=D:/chrome_profiles/test_profile"); // moves browser data to D
+        driver = new ChromeDriver(options);
+        //driver is obj of ChromeDriver(); this method uses Webdriver to show his capabilites
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
@@ -94,20 +102,39 @@ public class MyJunit {
 
     }
 
+//    @Test
+//    public void selectDropdown() throws InterruptedException {
+//        driver.get("https://demoqa.com/select-menu");
+
+    /// /        Select select = new Select(driver.findElement(By.id("oldSelectMenu")));
+    /// /        select.selectByVisibleText("Magenta");
+//        List<WebElement> dropdown = driver.findElements(By.className("css-1hwfws3"));
+//        dropdown.get(1).click();
+//        Thread.sleep(1000);
+//        //dropdown.get(1).sendKeys(Keys.ENTER);
+//        Actions actions = new Actions(driver);
+//        for (int i = 0; i < 3; i++) {
+//            actions.sendKeys(Keys.ARROW_DOWN).perform();
+//        }
+//        actions.sendKeys(Keys.ENTER).perform();
+//    }
     @Test
     public void selectDropdown() throws InterruptedException {
         driver.get("https://demoqa.com/select-menu");
-//        Select select = new Select(driver.findElement(By.id("oldSelectMenu")));
-//        select.selectByVisibleText("Magenta");
+//        Select select=new Select(driver.findElement(By.id("oldSelectMenu")));
+//        select.selectByVisibleText("Green");
         List<WebElement> dropdown = driver.findElements(By.className("css-1hwfws3"));
         dropdown.get(1).click();
         Thread.sleep(1000);
-        //dropdown.get(1).sendKeys(Keys.ENTER);
+//        dropdown.get(1).sendKeys(Keys.ARROW_DOWN);
+//        dropdown.get(1).sendKeys(Keys.ENTER);
         Actions actions = new Actions(driver);
-        for (int i = 0; i < 3; i++) {
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-        }
-        actions.sendKeys(Keys.ENTER).perform();
+//        for (int i = 0; i < 2; i++) {
+//            actions.sendKeys(Keys.ARROW_DOWN).perform();
+//        }
+//        actions.sendKeys(Keys.ENTER).perform();
+        actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+
     }
 
     //    @Test
@@ -165,14 +192,15 @@ public class MyJunit {
         driver.switchTo().window(parentWindow);
 
     }
+
     @Test
-    public void scrapData(){
+    public void scrapData() {
         driver.get("https://demoqa.com/webtables");
         WebElement table = driver.findElement(By.className("rt-tbody"));
-        List<WebElement> allRows=table.findElements(By.cssSelector("[role=rowgroup]"));
-        for (WebElement row:allRows){
-            List<WebElement> cells=row.findElements(By.cssSelector("[role=gridcell]"));
-            for (WebElement cell:cells){
+        List<WebElement> allRows = table.findElements(By.cssSelector("[role=rowgroup]"));
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.cssSelector("[role=gridcell]"));
+            for (WebElement cell : cells) {
                 System.out.println(cell.getText());
             }
         }
@@ -190,11 +218,26 @@ public class MyJunit {
         driver.switchTo().defaultContent();
     }
 
+    @Test
+    public void uploadAndDownloadFile() throws InterruptedException {
+        driver.get("https://demoqa.com/upload-download");
+        String filePath = System.getProperty("user.dir") + "./src/test/resources/nature.png";
+        WebElement uploadInput = driver.findElement(By.id("uploadFile"));
+        uploadInput.sendKeys(filePath);
+        Thread.sleep(2000);
+        WebElement downloadButton = driver.findElement(By.id("downloadButton"));
+        downloadButton.click();
+        Thread.sleep(2000);
+    }
+
 
     @AfterAll
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
 
 }
+
+
+
