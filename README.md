@@ -66,5 +66,5 @@ The purpose of this project is to demonstrate hands-on experience with:
 
 ### 🧾 Test Execution Report (HTML Screenshot)
 Below is a sample HTML report automatically generated after running the Selenium-JUnit test suite.
-![image alt]([https://github.com/abhishek11das/jmeter-performance-testing/blob/55a5688773ea6a6d8e1b3ca30494b58e718a1966/Load%20Test.png](https://github.com/abhishek11das/selenium-junit-demoqa-automation/blob/abefbc2a9a57ce47816a8688ef1a702e23f3a37b/Report.png)
+![image alt](https://github.com/abhishek11das/jmeter-performance-testing/blob/55a5688773ea6a6d8e1b3ca30494b58e718a1966/Load%20Test.png](https://github.com/abhishek11das/selenium-junit-demoqa-automation/blob/abefbc2a9a57ce47816a8688ef1a702e23f3a37b/Report.png)
 
